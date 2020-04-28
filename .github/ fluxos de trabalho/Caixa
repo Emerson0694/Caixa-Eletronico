@@ -1,0 +1,78 @@
+package Caixa;
+
+import java.util.Scanner;
+public class Eletronico {
+    
+    public static void main(String[] args){
+        
+        Scanner ler = new Scanner(System.in);
+        
+        int ok = 0;
+        double subtrair;
+        float Saldo = 1000;
+       
+        System.out.println("Olá ");
+        
+        System.out.println("Digite o CPF: ");
+        String CPF = ler.next();
+        
+        if(CPF.equals("123.456.789-00")){
+            System.out.println("Acesso permitido");
+            
+            for(int i = 0; i < 3; i++){
+                System.out.println("Digite a Senha: ");
+                String Senha = ler.next();
+                if(Senha.equals("01020304")){
+                    System.out.println("Permitido");
+                    ok=1;
+                    i=3;
+                }
+                else{
+                    System.out.println("Senha errada");
+                    ok = 0;
+                }
+            }
+            if (ok == 1){
+                do{
+                    System.out.println("Menu");
+                    System.out.println("1 - Saldo");
+                    System.out.println("2 - Deposito");
+                    System.out.println("3 - Saque");
+                    System.out.println("0 - Sair");
+                    System.out.println("Digite a opção desejada: ");
+                    int Opt = ler.nextInt();
+                    switch(Opt){
+                        case 1 :
+                            System.out.println("Saldo = " + Saldo);
+                            break;
+                        case 2 :
+                            System.out.println("Digite o valor do deposito: ");
+                            float dep = ler.nextFloat();
+                            Saldo += dep;
+                            System.out.println("Saldo = "+ Saldo);
+                            break;
+                        case 3 :
+                            System.out.println("Digite o valor do Saque: ");
+                            float saq = ler.nextFloat();
+                            Saldo -= saq;
+                            System.out.println("Saldo = " + Saldo);
+                            break;
+                        case 0 :
+                            System.out.println("Sair");
+                            ok = 0;
+                            break;
+                        default:
+                            System.out.println("Digite somente numeros entre 0 e 4");
+                            break;
+                            }
+                }   while (ok == 1);
+            }
+            else{
+                System.out.println("NUMERO DE TENTATIVAS EXCEDIDO, CONTA BLOQUEADA.");
+            }
+        }
+        else{
+            System.out.println("Acesso Negado");
+        }
+    }   
+}
